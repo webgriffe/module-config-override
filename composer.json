@@ -1,0 +1,22 @@
+{
+    "name": "webgriffe/config-file-reader",
+    "description": "A Magento 2 modules that reads from file additional configuration",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Webgriffe SRL",
+            "email": "support@webgriffe.com"
+        }
+    ],
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "magento/framework": "~1.0.0"
+    },
+    "autoload": {
+        "files": [ "src/registration.php" ],
+        "psr-4": {
+            "Webgriffe\\ConfigFileReader\\": "src/"
+        }
+    }
+}
