@@ -1,6 +1,6 @@
 {
     "name": "webgriffe/config-file-reader",
-    "description": "A Magento 2 modules that reads from file additional configuration",
+    "description": "A Magento 2 module that reads from file additional configuration",
     "type": "magento2-module",
     "license": "MIT",
     "authors": [
