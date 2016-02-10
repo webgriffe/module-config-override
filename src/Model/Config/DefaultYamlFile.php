@@ -20,7 +20,7 @@ class DefaultYamlFile
     {
         $filePath = $directoryList->getPath(DirectoryList::CONFIG) . DIRECTORY_SEPARATOR . $filename;
         if (file_exists($filePath) && is_readable($filePath)) {
-            $this->data = Yaml::parse($filePath);
+            $this->data = Yaml::parse(file_get_contents($filePath));
         }
     }
 
