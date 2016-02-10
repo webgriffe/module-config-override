@@ -12,7 +12,7 @@
                 sortOrder="10"
                 disabled="false"/>
     </type>
-    <type name="Webgriffe\ConfigFileReader\Model\Config\Reader\DefaultYamlFile">
+    <type name="Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile">
         <arguments>
             <argument name="filename" xsi:type="string">default.yml</argument>
             <argument name="directoryList" xsi:type="object">Magento\Framework\App\Filesystem\DirectoryList</argument>
@@ -22,7 +22,7 @@
         <arguments>
             <argument name="context" xsi:type="object">Magento\Backend\Block\Template\Context</argument>
             <argument name="data" xsi:type="array" />
-            <argument name="defaultYamlFile" xsi:type="object">Webgriffe\ConfigFileReader\Model\Config\Reader\DefaultYamlFile</argument>
+            <argument name="defaultYamlFile" xsi:type="object">Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile</argument>
         </arguments>
     </type>
     <preference for="\Magento\Config\Block\System\Config\Form\Field" type="\Webgriffe\ConfigFileReader\Block\System\Config\Form\Field" />

@@ -7,7 +7,7 @@ namespace Webgriffe\ConfigFileReader\Block\System\Config\Form;
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field as BaseField;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Webgriffe\ConfigFileReader\Model\Config\Reader\DefaultYamlFile;
+use Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile;
 
 class Field extends BaseField
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Webgriffe\ConfigFileReader\Model\Config\Reader;
+namespace Webgriffe\ConfigFileReader\Model\Config;
 
 
 use Magento\Framework\App\Filesystem\DirectoryList;

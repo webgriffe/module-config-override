@@ -4,6 +4,7 @@
 namespace Webgriffe\ConfigFileReader\Model\Config\Reader;
 
 use Magento\Framework\App\Config\Scope\ReaderInterface;
+use Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile;
 
 class Plugin
 {
