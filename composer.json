@@ -13,6 +13,9 @@
         "php": "~5.5.0|~5.6.0|~7.0.0",
         "magento/framework": "~100.0.0"
     },
+    "require-dev": {
+        "mikey179/vfsStream": "@stable"
+    },
     "autoload": {
         "files": [ "src/registration.php" ],
         "psr-4": {
