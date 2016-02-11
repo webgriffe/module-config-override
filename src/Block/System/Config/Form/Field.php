@@ -52,6 +52,6 @@ class Field extends BaseField
         $fieldConfig = $element->getData('field_config');
         $path = $fieldConfig['path'] . '/' . $fieldConfig['id'];
         $flattenOverridenValues = $this->defaultYamlFile->asFlattenArray();
-        return in_array($path, array_keys($flattenOverridenValues));
+        return array_key_exists($path, $flattenOverridenValues));
     }
 }
