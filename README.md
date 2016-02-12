@@ -1,7 +1,7 @@
 Config File Reader Magento 2 Module
 ===================================
 
-[![Build Status](https://travis-ci.org/webgriffe/config-file-reader.svg?branch=master)](https://travis-ci.org/webgriffe/config-file-reader)
+[![Build Status](https://travis-ci.org/webgriffe/module-config-file-reader.svg?branch=master)](https://travis-ci.org/webgriffe/module-config-file-reader)
 
 A Magento 2 module that reads from file additional configuration, inspired by this Magento 1.x extension: [https://github.com/webgriffe/config-extension](https://github.com/webgriffe/config-extension).
 
