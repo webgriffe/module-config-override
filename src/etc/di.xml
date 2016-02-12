@@ -7,23 +7,23 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Store\Model\Config\Reader\DefaultReader">
-        <plugin name="webgriffe_config_file_reader_plugin"
-                type="Webgriffe\ConfigFileReader\Model\Config\Reader\Plugin"
+        <plugin name="webgriffe_config_override_plugin"
+                type="Webgriffe\ConfigOverride\Model\Config\Reader\Plugin"
                 sortOrder="10"
                 disabled="false"/>
     </type>
-    <type name="Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile">
+    <type name="Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile">
         <arguments>
             <argument name="filename" xsi:type="string">default.yml</argument>
             <argument name="directoryList" xsi:type="object">Magento\Framework\App\Filesystem\DirectoryList</argument>
         </arguments>
     </type>
-    <type name="Webgriffe\ConfigFileReader\Block\System\Config\Form\Field">
+    <type name="Webgriffe\ConfigOverride\Block\System\Config\Form\Field">
         <arguments>
             <argument name="context" xsi:type="object">Magento\Backend\Block\Template\Context</argument>
-            <argument name="defaultYamlFile" xsi:type="object">Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile</argument>
+            <argument name="defaultYamlFile" xsi:type="object">Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile</argument>
             <argument name="data" xsi:type="array" />
         </arguments>
     </type>
-    <preference for="\Magento\Config\Block\System\Config\Form\Field" type="\Webgriffe\ConfigFileReader\Block\System\Config\Form\Field" />
+    <preference for="\Magento\Config\Block\System\Config\Form\Field" type="\Webgriffe\ConfigOverride\Block\System\Config\Form\Field" />
 </config>

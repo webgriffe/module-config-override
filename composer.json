@@ -31,7 +31,7 @@
     "autoload": {
         "files": [ "src/registration.php" ],
         "psr-4": {
-            "Webgriffe\\ConfigFileReader\\": "src/"
+            "Webgriffe\\ConfigOverride\\": "src/"
         }
     }
 }

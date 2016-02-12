@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Webgriffe\ConfigFileReader\Test\Unit\Model\Config;
+namespace Webgriffe\ConfigOverride\Test\Unit\Model\Config;
 
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use org\bovigo\vfs\vfsStream;
-use Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile;
+use Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile;
 
 class DefaultYamlFileTest extends \PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class DefaultYamlFileTest extends \PHPUnit_Framework_TestCase
             'non-existent.yml',
             $this->mockDirectoryList(vfsStream::url('root/app/etc'))
         );
-        $this->assertInstanceOf('Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile', $defaultYamlFile);
+        $this->assertInstanceOf('Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile', $defaultYamlFile);
         $this->assertEmpty($defaultYamlFile->asArray());
     }
 
@@ -31,7 +31,7 @@ design:
 YML;
         vfsStream::setup('root', null, ['app' => ['etc' => [$filename => $content]]]);
         $defaultYamlFile = new DefaultYamlFile($filename, $this->mockDirectoryList(vfsStream::url('root/app/etc')));
-        $this->assertInstanceOf('Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile', $defaultYamlFile);
+        $this->assertInstanceOf('Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile', $defaultYamlFile);
         $this->assertEquals(['design' => ['head' => ['default_title' => 'My Title']]], $defaultYamlFile->asArray());
     }
 
@@ -48,7 +48,7 @@ other:
 YML;
         vfsStream::setup('root', null, ['app' => ['etc' => [$filename => $content]]]);
         $defaultYamlFile = new DefaultYamlFile($filename, $this->mockDirectoryList(vfsStream::url('root/app/etc')));
-        $this->assertInstanceOf('Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile', $defaultYamlFile);
+        $this->assertInstanceOf('Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile', $defaultYamlFile);
         $this->assertEquals(
             ['design/head/default_title' => 'My Title', 'other/config/setting' => 'value'],
             $defaultYamlFile->asFlattenArray()

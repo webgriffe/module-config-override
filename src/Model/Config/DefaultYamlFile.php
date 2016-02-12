@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Webgriffe\ConfigFileReader\Model\Config;
+namespace Webgriffe\ConfigOverride\Model\Config;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Symfony\Component\Yaml\Yaml;

@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Webgriffe\ConfigFileReader\Block\System\Config\Form;
+namespace Webgriffe\ConfigOverride\Block\System\Config\Form;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field as BaseField;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile;
+use Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile;
 
 class Field extends BaseField
 {

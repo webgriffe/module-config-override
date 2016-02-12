@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Webgriffe\ConfigFileReader\Model\Config\Reader;
+namespace Webgriffe\ConfigOverride\Model\Config\Reader;
 
 use Magento\Framework\App\Config\Scope\ReaderInterface;
-use Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile;
+use Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile;
 
 class Plugin
 {

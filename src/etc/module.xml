@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../vendor/magento/framework/Module/etc/module.xsd">
-    <module name="Webgriffe_ConfigFileReader" setup_version="1.0.0">
+    <module name="Webgriffe_ConfigOverride" setup_version="1.0.0">
         <sequence>
             <module name="Magento_Store"/>
         </sequence>
