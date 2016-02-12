@@ -19,7 +19,8 @@
     },
     "require-dev": {
         "mikey179/vfsStream": "@stable",
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "squizlabs/php_codesniffer": "^2.5"
     },
     "repositories": [
         {
