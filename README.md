@@ -37,8 +37,8 @@ Overridden config values are shown in Magento's backend. Every config setting it
 
 	design:
 	  head:
-	    default_title: My Store Title
-	    title_suffix: - My Store Title
+	    default_title: Webgriffe Store
+	    title_suffix: - Webgriffe Store
 
 When you'll go to `Stores -> Configuration -> General -> Design` you'll find the overridden config value shown and not editable.
 
