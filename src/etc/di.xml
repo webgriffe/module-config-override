@@ -21,8 +21,8 @@
     <type name="Webgriffe\ConfigFileReader\Block\System\Config\Form\Field">
         <arguments>
             <argument name="context" xsi:type="object">Magento\Backend\Block\Template\Context</argument>
-            <argument name="data" xsi:type="array" />
             <argument name="defaultYamlFile" xsi:type="object">Webgriffe\ConfigFileReader\Model\Config\DefaultYamlFile</argument>
+            <argument name="data" xsi:type="array" />
         </arguments>
     </type>
     <preference for="\Magento\Config\Block\System\Config\Form\Field" type="\Webgriffe\ConfigFileReader\Block\System\Config\Form\Field" />

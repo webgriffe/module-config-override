@@ -3,7 +3,6 @@
 
 namespace Webgriffe\ConfigFileReader\Block\System\Config\Form;
 
-
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field as BaseField;
 use Magento\Framework\Data\Form\Element\AbstractElement;
@@ -18,12 +17,11 @@ class Field extends BaseField
      */
     private $defaultYamlFile;
 
-    public function __construct(Context $context, array $data = [], DefaultYamlFile $defaultYamlFile)
+    public function __construct(Context $context, DefaultYamlFile $defaultYamlFile, array $data = [])
     {
         parent::__construct($context, $data);
         $this->defaultYamlFile = $defaultYamlFile;
     }
-
 
     protected function _getElementHtml(AbstractElement $element)
     {

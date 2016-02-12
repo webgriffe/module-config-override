@@ -3,7 +3,6 @@
 
 namespace Webgriffe\ConfigFileReader\Model\Config;
 
-
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Symfony\Component\Yaml\Yaml;
 
@@ -43,7 +42,8 @@ class DefaultYamlFile
         return $this->flattenData;
     }
 
-    private function doFlatten($array, $prefix = '') {
+    private function doFlatten($array, $prefix = '')
+    {
         $result = array();
         foreach ($array as $key => $value) {
             if (is_array($value)) {
