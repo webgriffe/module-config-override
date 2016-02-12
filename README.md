@@ -1,19 +1,19 @@
-Config File Reader Magento 2 Module
-===================================
+Config Override Magento 2 Module
+================================
 
-[![Build Status](https://travis-ci.org/webgriffe/module-config-file-reader.svg?branch=master)](https://travis-ci.org/webgriffe/module-config-file-reader)
+[![Build Status](https://travis-ci.org/webgriffe/module-config-override.svg?branch=master)](https://travis-ci.org/webgriffe/module-config-override)
 
-A Magento 2 module that reads from file additional configuration, inspired by this Magento 1.x extension: [https://github.com/webgriffe/config-extension](https://github.com/webgriffe/config-extension).
+A Magento 2 module that overrides default configuration from file which can be added to version control, inspired by this Magento 1.x extension: [https://github.com/webgriffe/config-extension](https://github.com/webgriffe/config-extension).
 
 Installation
 ------------
 
-Please, use [Magento Composer Installer](https://github.com/magento-hackathon/magento-composer-installer) and add `webgriffe/module-config-file-reader` to your dependencies. Also add this repository to your `composer.json`.
+Please, use [Composer](https://getcomposer.org) and add `webgriffe/module-config-override` to your dependencies. Also add this repository to your `composer.json`.
 
 	"repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/webgriffe/module-config-file-reader.git"
+            "url": "https://github.com/webgriffe/module-config-override.git"
         }
     ]
     
