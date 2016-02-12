@@ -2,6 +2,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Webgriffe_ConfigFileReader',
+    'Webgriffe_ConfigOverride',
     __DIR__
 );
