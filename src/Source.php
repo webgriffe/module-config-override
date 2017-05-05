@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Webgriffe\ConfigOverride;
-
 
 use Magento\Framework\App\Config\ConfigSourceInterface;
 use Webgriffe\ConfigOverride\Model\Config\AdditionalInterface;

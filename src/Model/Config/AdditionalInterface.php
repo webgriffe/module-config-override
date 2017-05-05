@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Webgriffe\ConfigOverride\Model\Config;
-
 
 interface AdditionalInterface
 {
