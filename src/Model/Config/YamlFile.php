@@ -1,12 +1,10 @@
 <?php
 
-
 namespace Webgriffe\ConfigOverride\Model\Config;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
 use Symfony\Component\Yaml\Yaml;
 
-class DefaultYamlFile
+class YamlFile implements AdditionalInterface
 {
     /**
      * @var array
@@ -15,9 +13,12 @@ class DefaultYamlFile
 
     private $flattenData = null;
 
-    public function __construct($filename, DirectoryList $directoryList)
+    /**
+     * YamlFile constructor.
+     * @param string $filePath
+     */
+    public function __construct($filePath)
     {
-        $filePath = $directoryList->getPath(DirectoryList::CONFIG) . DIRECTORY_SEPARATOR . $filename;
         if (file_exists($filePath) && is_readable($filePath)) {
             $this->data = Yaml::parse(file_get_contents($filePath));
         }

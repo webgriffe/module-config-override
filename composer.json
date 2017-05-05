@@ -17,9 +17,9 @@
         "symfony/yaml": "*"
     },
     "require-dev": {
-        "mikey179/vfsStream": "@stable",
-        "phpunit/phpunit": "@stable",
-        "squizlabs/php_codesniffer": "^2.5"
+        "squizlabs/php_codesniffer": "^2.5",
+        "phpunit/phpunit": "^6.1",
+        "mikey179/vfsStream": "^1.6"
     },
     "repositories": [
         {
