@@ -5,18 +5,19 @@ namespace Webgriffe\ConfigOverride;
 
 
 use Magento\Framework\App\Config\ConfigSourceInterface;
-use Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile;
+use Webgriffe\ConfigOverride\Model\Config\AdditionalInterface;
+use Webgriffe\ConfigOverride\Model\Config\YamlFile;
 
 class Source implements ConfigSourceInterface
 {
     /**
-     * @var DefaultYamlFile
+     * @var AdditionalInterface
      */
-    private $defaultYamlFile;
+    private $additionalConfig;
 
-    public function __construct(DefaultYamlFile $defaultYamlFile)
+    public function __construct(AdditionalInterface $additionalConfig)
     {
-        $this->defaultYamlFile = $defaultYamlFile;
+        $this->additionalConfig = $additionalConfig;
     }
 
     /**
@@ -27,6 +28,6 @@ class Source implements ConfigSourceInterface
      */
     public function get($path = '')
     {
-        return ['default' => $this->defaultYamlFile->asArray()];
+        return ['default' => $this->additionalConfig->asArray()];
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Webgriffe\ConfigOverride\Model\Config\AdditionalInterface" type="Webgriffe\ConfigOverride\Model\Config\AggregateYamlFiles" />
     <virtualType name="systemConfigSourceAggregated">
         <arguments>
             <argument name="sources" xsi:type="array">
@@ -11,16 +12,10 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile">
-        <arguments>
-            <argument name="filename" xsi:type="string">default.yml</argument>
-            <argument name="directoryList" xsi:type="object">Magento\Framework\App\Filesystem\DirectoryList</argument>
-        </arguments>
-    </type>
     <type name="Webgriffe\ConfigOverride\Block\System\Config\Form\Field">
         <arguments>
             <argument name="context" xsi:type="object">Magento\Backend\Block\Template\Context</argument>
-            <argument name="defaultYamlFile" xsi:type="object">Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile</argument>
+            <argument name="defaultYamlFile" xsi:type="object">Webgriffe\ConfigOverride\Model\Config\AdditionalInterface</argument>
             <argument name="data" xsi:type="array" />
         </arguments>
     </type>

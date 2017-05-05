@@ -1,26 +1,26 @@
 <?php
 
-
 namespace Webgriffe\ConfigOverride\Block\System\Config\Form;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field as BaseField;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile;
+use Webgriffe\ConfigOverride\Model\Config\AdditionalInterface;
 
 class Field extends BaseField
 {
-    const ACTION_SCOPE_TYPE = \Magento\Framework\App\Config\ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+    const ACTION_SCOPE_TYPE = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
 
     /**
-     * @var DefaultYamlFile
+     * @var AdditionalInterface
      */
-    private $defaultYamlFile;
+    private $additionalConfig;
 
-    public function __construct(Context $context, DefaultYamlFile $defaultYamlFile, array $data = [])
+    public function __construct(Context $context, AdditionalInterface $additionalConfig, array $data = [])
     {
         parent::__construct($context, $data);
-        $this->defaultYamlFile = $defaultYamlFile;
+        $this->additionalConfig = $additionalConfig;
     }
 
     protected function _getElementHtml(AbstractElement $element)
@@ -49,7 +49,7 @@ class Field extends BaseField
     {
         $fieldConfig = $element->getData('field_config');
         $path = $fieldConfig['path'] . '/' . $fieldConfig['id'];
-        $flattenOverridenValues = $this->defaultYamlFile->asFlattenArray();
+        $flattenOverridenValues = $this->additionalConfig->asFlattenArray();
         return array_key_exists($path, $flattenOverridenValues);
     }
 }
