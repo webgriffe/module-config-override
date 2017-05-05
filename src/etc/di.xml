@@ -1,12 +1,16 @@
 <?xml version="1.0"?>
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Store\Model\Config\Reader\DefaultReader">
-        <plugin name="webgriffe_config_override_plugin"
-                type="Webgriffe\ConfigOverride\Model\Config\Reader\Plugin"
-                sortOrder="10"
-                disabled="false"/>
-    </type>
+    <virtualType name="systemConfigSourceAggregated">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="override" xsi:type="array">
+                    <item name="source" xsi:type="object">Webgriffe\ConfigOverride\Source</item>
+                    <item name="sortOrder" xsi:type="string">150</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
     <type name="Webgriffe\ConfigOverride\Model\Config\DefaultYamlFile">
         <arguments>
             <argument name="filename" xsi:type="string">default.yml</argument>
