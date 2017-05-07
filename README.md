@@ -8,26 +8,35 @@ A Magento 2 module that overrides default configuration from file which can be a
 Installation
 ------------
 
-Please, use [Composer](https://getcomposer.org) and add `webgriffe/module-config-override` to your dependencies. Also add this repository to your `composer.json`.
+Add this extension as dependency using [Composer](https://getcomposer.org):
 
-	"repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/webgriffe/module-config-override.git"
-        }
-    ]
+	$ composer require webgriffe/module-config-override
     
 Config override
 ---------------
 
 Magento configuration is driven by database. This, sometimes, is overkill and forces us to maintain upgrade script to keep Magento envorinment aligned with features development.
-So, this extension enables additional config file that overrides database configuration. The file must be at path `app/etc/default.yml`. For example:
+So, this extension enables additional config source that loads several YAML files and overrides database configuration.
 
-	design:
-	  head:
-	    default_title: My Store Title
-	    title_suffix: - My Store Title
+Loaded YAML files are (in this order):
 
+* `app/etc/default.yml.dist`: this intended to be under version control to distribute configuration for all environments.
+* `app/etc/default.yml`: this is intendet to be ignored by version control system to provide configuration related to local needs.
+
+Also, if the `MAGE_ENVIRONMENT` environment variable is defined, then two additiontal files are loaded. For example, if the `MAGE_ENVIRONMENT` variable value is `dev`, the following two files are loaded:
+
+* `app/etc/default-dev.yml.dist`: as `default.yml.dist`, this is intended to be under version control to distribute configuration but only for the `dev` environment.
+* `app/etc/default-dev.yml`: as `default.yml`, this is intended to be ignored by version control to provide configuration related to local needs but only for the `dev` environment.
+
+Configuration in YAML files must be specified with the same structure of Magento system configuration, for example:
+
+```yml
+web:
+  secure:
+    base_url: "http://my-project-url.dev/"
+  unsecure:
+    base_url: "http://my-project-url.dev/"
+```    
 Only `default` configuration scope is overridden.
 
 Overridden config values are shown in backend
@@ -35,10 +44,12 @@ Overridden config values are shown in backend
 
 Overridden config values are shown in Magento's backend. Every config setting it's shown on its section. For example, if you have the following `default.yml` file:
 
-	design:
-	  head:
-	    default_title: Webgriffe Store
-	    title_suffix: - Webgriffe Store
+```yml
+design:
+  head:
+    default_title: Webgriffe Store
+    title_suffix: - Webgriffe Store
+```    
 
 When you'll go to `Stores -> Configuration -> General -> Design` you'll find the overridden config value shown and not editable.
 
@@ -46,19 +57,12 @@ When you'll go to `Stores -> Configuration -> General -> Design` you'll find the
 
 This feature improves a lot the usability of this extension.
 
-
 To Do
 -----
 
 * Improve system config admin interface to support complex fields
-* Environment specific overrides
 
 Credits
 -------
 
 * Developed by [Webgriffe®](http://webgriffe.com)
-
-
-
-
-
