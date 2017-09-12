@@ -10,7 +10,8 @@ Installation
 
 Add this extension as dependency using [Composer](https://getcomposer.org):
 
-	$ composer require webgriffe/module-config-override
+	composer require webgriffe/module-config-override
+	php bin/magento setup:upgrade
     
 Config override
 ---------------
