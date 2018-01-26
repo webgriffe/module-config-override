@@ -13,20 +13,21 @@ class Field extends BaseField
     const ACTION_SCOPE_TYPE = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
 
     /**
-     * @var AdditionalInterface
+     * @var array
      */
-    private $additionalConfig;
+    private $flatOverriddenConfig;
 
     public function __construct(Context $context, AdditionalInterface $additionalConfig, array $data = [])
     {
         parent::__construct($context, $data);
-        $this->additionalConfig = $additionalConfig;
+        $this->flatOverriddenConfig = $additionalConfig->asFlattenArray();
     }
 
     protected function _getElementHtml(AbstractElement $element)
     {
         if ($element->getData('scope') === self::ACTION_SCOPE_TYPE) {
             if ($this->isElementValueOverridden($element)) {
+                $element->setValue($this->getElementOverriddenValue($element));
                 $element->setData('disabled', true);
                 $element->setComment(
                     sprintf(
@@ -49,7 +50,17 @@ class Field extends BaseField
     {
         $fieldConfig = $element->getData('field_config');
         $path = $fieldConfig['path'] . '/' . $fieldConfig['id'];
-        $flattenOverridenValues = $this->additionalConfig->asFlattenArray();
-        return array_key_exists($path, $flattenOverridenValues);
+        return array_key_exists($path, $this->flatOverriddenConfig);
+    }
+
+    /**
+     * @param AbstractElement $element
+     * @return string
+     */
+    protected function getElementOverriddenValue(AbstractElement $element)
+    {
+        $fieldConfig = $element->getData('field_config');
+        $path = $fieldConfig['path'] . '/' . $fieldConfig['id'];
+        return $this->flatOverriddenConfig[$path];
     }
 }
