@@ -3,9 +3,31 @@ php:
   - '5.6'
   - '7.0'
   - '7.1'
+
+env:
+  global:
+    - DB_HOST="127.0.0.1"
+    - DB_NAME="module-config-override"
+    - DB_USER="root"
+    - DB_PASS=""
+    - DB_TEST="module-config-override-test"
+    - MYSQL_CLI_CREDENTIALS=false
+  matrix:
+    - MAGENTO_VERSION="2.0.*"
+    - MAGENTO_VERSION="2.1.*"
+    - MAGENTO_VERSION="2.2.*"
+
 install:
   - composer config http-basic.repo.magento.com $MAGENTO_REPO_PUBLIC_KEY $MAGENTO_REPO_PRIVATE_KEY
-  - composer install
+  - composer install -n
 script:
   - vendor/bin/phpcs --ignore=src/Test/ src/
   - vendor/bin/phpunit src/Test/Unit
+  - composer require -n --dev --no-update magento/product-community-edition "$MAGENTO_VERSION"
+  - composer install -n
+  - curl -Ls https://raw.githubusercontent.com/mmenozzi/m2-bash-ci/master/m2-bash-ci.sh | bash
+  - curl -O https://files.magerun.net/n98-magerun2.phar
+  - echo "web:" >> app/etc/default.yml.dist
+  - echo "  unsecure:" >> app/etc/default.yml.dist
+  - echo "    base_url: http://overridden-from-file.test/" >> app/etc/default.yml.dist
+  - php n98-magerun2.phar dev:console "\$di->get('\Magento\Framework\App\Config')->getValue('web/unsecure/base_url');exit;" | grep http://overridden-from-file.test/
