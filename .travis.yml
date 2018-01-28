@@ -12,10 +12,19 @@ env:
     - DB_PASS=""
     - DB_TEST="module-config-override-test"
     - MYSQL_CLI_CREDENTIALS=false
+    - BASE_URL="http://module-config-override.test/"
   matrix:
-    - MAGENTO_VERSION="2.0.*"
     - MAGENTO_VERSION="2.1.*"
     - MAGENTO_VERSION="2.2.*"
+
+matrix:
+  exclude:
+    - php: "5.6"
+      env: MAGENTO_VERSION="2.2.*"
+
+cache:
+  directories:
+    - $HOME/.composer
 
 install:
   - composer config http-basic.repo.magento.com $MAGENTO_REPO_PUBLIC_KEY $MAGENTO_REPO_PRIVATE_KEY
@@ -24,6 +33,7 @@ script:
   - vendor/bin/phpcs --ignore=src/Test/ src/
   - vendor/bin/phpunit src/Test/Unit
   - composer require -n --dev --no-update magento/product-community-edition "$MAGENTO_VERSION"
+  - rm composer.lock
   - composer install -n
   - curl -Ls https://raw.githubusercontent.com/mmenozzi/m2-bash-ci/master/m2-bash-ci.sh | bash
   - curl -O https://files.magerun.net/n98-magerun2.phar
