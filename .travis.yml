@@ -39,8 +39,10 @@ script:
   - composer install -n
   - curl -Ls https://raw.githubusercontent.com/mmenozzi/m2-bash-ci/master/m2-bash-ci.sh | bash
   - curl -O https://files.magerun.net/n98-magerun2.phar
-  - echo "web:" >> app/etc/default.yml.dist
-  - echo "  unsecure:" >> app/etc/default.yml.dist
-  - echo "    base_url: http://overridden-from-file.test/" >> app/etc/default.yml.dist
+  - curl -LJO https://github.com/mikefarah/yq/releases/download/1.14.0/yq_linux_amd64
+  - chmod +x yq_linux_amd64
+  - touch app/etc/default.yml.dist
+  - ./yq_linux_amd64 w -i app/etc/default.yml.dist web.unsecure.base_url http://overridden-from-file.test/
   - cat app/etc/default.yml.dist
+  - php n98-magerun2.phar cache:clean
   - php n98-magerun2.phar dev:console "\$di->get('\Magento\Framework\App\Config')->getValue('web/unsecure/base_url');exit;" | grep http://overridden-from-file.test/
