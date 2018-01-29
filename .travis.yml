@@ -29,6 +29,8 @@ cache:
 install:
   - composer config http-basic.repo.magento.com $MAGENTO_REPO_PUBLIC_KEY $MAGENTO_REPO_PRIVATE_KEY
   - composer install -n
+before_script:
+  - phpenv config-rm xdebug.ini
 script:
   - vendor/bin/phpcs --ignore=src/Test/ src/
   - vendor/bin/phpunit src/Test/Unit
@@ -40,4 +42,5 @@ script:
   - echo "web:" >> app/etc/default.yml.dist
   - echo "  unsecure:" >> app/etc/default.yml.dist
   - echo "    base_url: http://overridden-from-file.test/" >> app/etc/default.yml.dist
+  - cat app/etc/default.yml.dist
   - php n98-magerun2.phar dev:console "\$di->get('\Magento\Framework\App\Config')->getValue('web/unsecure/base_url');exit;" | grep http://overridden-from-file.test/
