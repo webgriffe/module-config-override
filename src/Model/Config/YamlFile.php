@@ -20,7 +20,7 @@ class YamlFile implements AdditionalInterface
     public function __construct($filePath)
     {
         if (file_exists($filePath) && is_readable($filePath)) {
-            $this->data = Yaml::parse(file_get_contents($filePath));
+            $this->data = Yaml::parse(file_get_contents($filePath)) ?: [];
         }
     }
 
