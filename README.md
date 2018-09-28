@@ -43,7 +43,24 @@ Only `default` configuration scope is overridden.
 CLI notes
 ---------
 
-Please note that if you use the `MAGE_ENVIRONMENT` variable then it should be always set when Magento is running. So is not enough to set it through your webserver (for example with a `SetEnv "dev"` in Apache) but it should also be set into your command line shell. Otherwise, if you have the Magento's configuration cache enabled and you clear the cache from the command line, the `MAGE_ENVIRONMENT` will not be applied and you'll get unexpected behaviours.
+Please note that if you use the `MAGE_ENVIRONMENT` variable then it should be **always** set when Magento is running. So is not enough to set it through your webserver (for example with a `SetEnv "dev"` in Apache) but it should also be set into your command line shell.  Otherwise, if you have the Magento's configuration cache enabled and you clear the cache from the command line, the `MAGE_ENVIRONMENT` will not be applied and you'll get unexpected behaviours.  
+
+Remember to "export" you env variable when you run a command via shell:
+
+```
+export MAGE_ENVIRONMENT=dev && <your command> 
+```
+
+alternative you can add the `MAGE_ENVIRONMENT=dev` in your shell configuration (ex. for bash):
+
+file `/home/<you user>/.bashrc`:
+
+```
+....
+....
+
+MAGE_ENVIRONMENT=dev
+```
 
 Overridden config values are shown in backend
 ---------------------------------------------
