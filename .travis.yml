@@ -29,7 +29,6 @@ cache:
     - $HOME/.composer
 
 install:
-  - composer config http-basic.repo.magento.com $MAGENTO_REPO_PUBLIC_KEY $MAGENTO_REPO_PRIVATE_KEY
   - composer install -n
 before_script:
   - phpenv config-rm xdebug.ini
