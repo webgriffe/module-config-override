@@ -1,6 +1,30 @@
 Config Override Magento 2 Module
 ================================
 
+## :warning:DEPRECATION:warning:
+
+This module it is now useless, you can:
+1. Do `composer require symfony/dotenv`, take a look to [these exaplanations](https://github.com/symfony/demo/blob/v2.2.1/.env#L1-L12) to see the hierarchy;
+2. Create the file `app/etc/EnvironmentVariablesLoader.php`
+```php
+<?php
+
+declare(strict_types=1);
+
+use Symfony\Component\Dotenv\Dotenv;
+
+(new Dotenv())->loadEnv(__DIR__ . "/../../.env");
+```
+3. Load it throught composer modifing the `composer.json` file:
+```json
+    "files": [
++     "app/etc/EnvironmentVariablesLoader.php",
+      "app/etc/NonComposerComponentRegistration.php"
+    ],
+```
+4. Create the env files configuring variables as written on the [magento docu](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/paths/override-config-settings.html?lang=en#environment-variables).
+## :warning:DEPRECATION:warning:
+
 [![Build Status](https://travis-ci.org/webgriffe/module-config-override.svg?branch=master)](https://travis-ci.org/webgriffe/module-config-override)
 
 A Magento 2 module that overrides default configuration from file which can be added to version control, inspired by this Magento 1.x extension: [https://github.com/webgriffe/config-extension](https://github.com/webgriffe/config-extension).
